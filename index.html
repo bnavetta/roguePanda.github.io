@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Hello, World!</title>
-	</head>
-	<body>
-		<p>Hello, World!</p>
-	</body>
+<head>
+    <title>Ben Navetta</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'ffd8unh',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    </head>
+    <body>
+        <div id="root">
+            <div id="content">
+                <h1>Hello, World!</h1>
+                <p>
+                    I'm Ben Navetta, and I put this page together for Digital Language
+                    Art I. It's based on some things I'd done for another project but never got a chance to finish
+                    up.
+                </p>
+                <p>Here's a bit about the site:</p>
+                <ul>
+                    <li>
+                        Fonts: I used <a href="http://www.emigre.com/EFfeature.php?di=213">Mr Eaves Sans</a> for body
+                        text and <a href="http://mplus-fonts.osdn.jp/">M+ 1m</a> for headings. As a programmer who likes
+                        tweaking things, I've put a bit too much thought into choosing editor and terminal fonts, hence
+                        my love of monospaced programming typefaces.
+                    </li>
+                    <li>
+                        Building: While it's absolute overkill, I set up a <a href="http://gulpjs.com/">Gulp</a>-based
+                        build system to compile <a href="http://sass-lang.com/">Sass</a> and run it through
+                        <a href="http://postcss.org/">PostCSS</a> with autoprefixer and cssnano.
+                    </li>
+                    <li>
+                        Flexboxes: I really really like flexboxes and thought they deserve a bullet point.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
 </html>

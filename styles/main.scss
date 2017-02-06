@@ -1,0 +1,72 @@
+@function headings($from: 1, $to: 6) {
+    @if $from == $to {
+        @return 'h#{$from}';
+    } @else {
+        @return 'h#{$from}, ' + headings($from + 1, $to);
+    }
+}
+
+$primary-color: #1324c0;
+$light-color: #f9f9f9;
+$accent-color: #bfdbf7;
+
+html {
+    font-family: mr-eaves-sans, sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+
+    min-height: 100%;
+    background-color: $light-color;
+
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#{headings()} {
+    font-family: 'mplus-1m', 'Droid Mono', Menlo, Consolas, monospace;
+    font-weight: 200;
+    line-height: 1.5rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: $primary-color;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+a {
+    color: $primary-color;
+    text-decoration: underline;
+
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+#root {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    width: 30rem;
+}
