@@ -1,0 +1,39 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>Planet:</h1>
+<pre>Planet goes here</pre>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+    S: ["#smallPlanet", "#bigPlanet"],
+    smallPlanet: ["  __\n /#feature##feature#\\\n|#feature##feature##feature##feature#|\n \\#feature##feature#/\n  ¯¯"],
+    bigPlanet: ["     ____\n    o#f4#o\n o#f4# #f4# o\no#f4##f4##f4#o\no#f4##f4##f4#o\n o #f4# #f4#o\n    o____o'"],
+    f4: ["#feature##feature##feature##feature#"],
+    feature: [" ", " ", " ", " ", " ", "✹", "˚", "·", "▒", "▓", "░", "o", "0", "•", "⁂", "⁑", "⁕", "*", "∎"],
+};
+
+/*
+
+  __
+ /  \
+|    |
+ \  /
+  ¯¯
+
+     ____
+    o    o
+ o          o
+o            o
+o            o
+ o          o
+    o____o
+*/
+
+
+var grammar = tracery.createGrammar(grammarObj);
+function generate(){
+    var t = grammar.flatten("#S#");
+    $('pre').text(t);
+}
+</script>
