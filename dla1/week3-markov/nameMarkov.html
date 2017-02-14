@@ -1,0 +1,14 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var markov = new MarkovGenerator(2,18," ")
+var text = "Emmett Askira Justin Brower Andrew Buccellato Thomas Chisholm Sophie Houser Jeffrey Katz Raisa Khan Meredith Morran Amanda Morton Ben Navetta Krissy Pelley Ben Sheeran Ray Sosseh Rachel Tandon Will Van Zandt Louis Wei Claribel Wu" 
+markov.feed(text)
+function generate(){
+	var t = markov.generate()
+	t = t.split(" ").slice(0,2).join(" ")
+	$('h1').text(t);
+}
+</script>
+<h1>Markov-generated text will go here</h1>
+<button onclick="generate()">Generate</button>

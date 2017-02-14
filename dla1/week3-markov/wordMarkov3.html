@@ -1,0 +1,23 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var txt;
+var markov = new MarkovGeneratorWord(2,50)
+$.get("love1.txt", function(text) {
+     markov.feed(text);
+});
+$.get("love2.txt", function(text) {
+     markov.feed(text);
+});
+$.get("love3.txt", function(text) {
+     markov.feed(text);
+});
+$.get("love4.txt", function(text) {
+     markov.feed(text);
+});
+function generate(){
+	var t = markov.generate()
+	$('body').append("<p>"+t+"</p>")
+}
+</script>
+<button onclick="generate()">Generate</button>
