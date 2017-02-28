@@ -58,7 +58,7 @@
                 if (e.which === 10 || e.which === 13) {
                     const text = $(this).val();
                     appendHistory(text, true);
-                    $.get('https://markov-messages-uoskipmmxt.now.sh', { seed: text }, ({ message }) => {
+                    $.get('https://markov-messages-rlpcgunfja.now.sh', { seed: text }, ({ message }) => {
                         appendHistory(message, false);
                     });
                     $(this).val('');
