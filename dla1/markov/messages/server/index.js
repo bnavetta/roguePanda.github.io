@@ -7,7 +7,7 @@ const { MarkovGenerator } = require('./markov');
 const json = micro.json;
 const send = micro.send;
 
-const generator = new MarkovGenerator(7, 100);
+const generator = new MarkovGenerator(7, 30);
 
 const sourceData = fs.readFileSync('./source.txt.gz');
 zlib.inflate(sourceData, (err, buf) => {
@@ -26,7 +26,7 @@ const server = micro(async (req, res) => {
     }
     catch (e) {}
 
-    const message = generator.generate(seed);
+    const message = generator.generate(seed).split(" ").slice(0, -1).join(" ");
 
     res.setHeader('Access-Control-Allow-Origin', '*');
 
