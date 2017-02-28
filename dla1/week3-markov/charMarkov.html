@@ -2,8 +2,8 @@
 <script src="../lib/markov.js"></script>
 <script>
 var txt;
-var markov = new MarkovGenerator(4,200)
-$.get("windhover.txt", function(text) {
+var markov = new MarkovGenerator(4,500)
+$.get("hertzl.txt", function(text) {
      markov.feed(text);
 });
 function generate(){

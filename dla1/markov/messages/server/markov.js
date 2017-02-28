@@ -34,49 +34,55 @@ String.prototype.regexLastIndexOf = function(regex, startpos) {
     return lastIndexOf;
 }
 // An object that generates text with markov-chains at the character level
-function MarkovGenerator(n, max, separator="\n", trim=false) {
-  // Order (or length) of each ngram
-  this.n = n;
-  // What is the maximum amount we will generate?
-  this.max = max;
-  // An object as dictionary
-  // each ngram is the key, a list of possible next elements are the values
-  this.ngrams = {};
-  // A separate array of possible beginnings to generated text
-  this.beginnings = [];
+class MarkovGenerator {
+
+  constructor(n, max, separator="\n", trim=false) {
+      // Order (or length) of each ngram
+      this.n = n;
+      // What is the maximum amount we will generate?
+      this.max = max;
+      // An object as dictionary
+      // each ngram is the key, a list of possible next elements are the values
+      this.ngrams = {};
+      // A separate array of possible beginnings to generated text
+      this.beginnings = [];
+
+      this.separator = separator;
+      this.trim = trim;
+  }
 
   // A function to feed in text to the markov chain
-  this.feed = function(text) {
+  feed(text) {
 
-    // Discard this line if it's too short
-    if (text.length < this.n) {
-      return false;
-    }
+        // Discard this line if it's too short
+        if (text.length < this.n) {
+          return false;
+        }
 
-    // Store the first ngram of this line
-    var splitText = text.split(separator)
-    for (var i = splitText.length - 1; i >= 0; i--) {
-      var beginning = splitText[i].substring(0, this.n);
-      this.beginnings.push(beginning);
-    }
+        // Store the first ngram of this line
+        var splitText = text.split(this.separator)
+        for (var i = splitText.length - 1; i >= 0; i--) {
+          var beginning = splitText[i].substring(0, this.n);
+          this.beginnings.push(beginning);
+        }
 
-    // var beginning = text.substring(0, this.n);
+        // var beginning = text.substring(0, this.n);
 
-    // Now let's go through everything and create the dictionary
-    for (var i = 0; i < text.length - this.n; i++) {
-      var gram = text.substring(i, i + this.n);
-      var next = text.charAt(i + this.n);
-      // Is this a new one?
-      if (!this.ngrams.hasOwnProperty(gram)) {
-        this.ngrams[gram] = [];
-      }
-      // Add to the list
-      this.ngrams[gram].push(next);
-    }
+        // Now let's go through everything and create the dictionary
+        for (var i = 0; i < text.length - this.n; i++) {
+          var gram = text.substring(i, i + this.n);
+          var next = text.charAt(i + this.n);
+          // Is this a new one?
+          if (!this.ngrams.hasOwnProperty(gram)) {
+            this.ngrams[gram] = [];
+          }
+          // Add to the list
+          this.ngrams[gram].push(next);
+        }
   }
 
   // Generate a text from the information ngrams
-  this.generate = function(seed) {
+  generate(seed) {
 
      // Use a given beginning
      if (seed) {
@@ -112,7 +118,7 @@ function MarkovGenerator(n, max, separator="\n", trim=false) {
       }
     }
     // Here's what we got!
-    if(trim){
+    if(this.trim){
       output = output.substring(0,output.regexLastIndexOf(/[!.?]/)+1)
     }
 
@@ -198,4 +204,10 @@ function MarkovGeneratorWord(n, max, trim=true,separator=/[!.?]/) {
     output = output.join(' ');
     return output.substring(0,output.regexLastIndexOf(/[.!?\"]/)+1)
   }
+}
+
+
+module.exports = {
+    MarkovGenerator,
+    MarkovGeneratorWord
 }

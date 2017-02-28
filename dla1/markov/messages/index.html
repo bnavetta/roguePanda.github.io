@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../../lib/jquery-1.11.1.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <style>
+            body {
+                margin: 50px 80px;
+
+                font-size: 18px;
+                line-height: 14px;
+            }
+
+            input {
+                padding: 10px;
+                width: 33%;
+            }
+
+            #history {
+                border: 1px solid black;
+                padding: 10px;
+                min-width: 50%;
+                min-height: 20px;
+                list-style: none;
+            }
+
+            #history > li {
+                padding: 5px;
+            }
+
+            .msg-me::before {
+                color: #120A31;
+                content: "You: ";
+            }
+
+            .msg-bot::before {
+                color: #7C874D;
+                content: "The Void: ";
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul id="history">
+
+        </ul>
+
+        <div>
+            <input type="text" id="messagebox" placeholder="Press <Enter> to send">
+        </div>
+
+        <script type="text/babel">
+            const $history = $('#history');
+            const appendHistory = (message, me) => $history.append(`<li class="${me ? 'msg-me' : 'msg-bot'}">${message}</li>`);
+
+            $('#messagebox').keypress(function (e) {
+                if (e.which === 10 || e.which === 13) {
+                    const text = $(this).val();
+                    appendHistory(text, true);
+                    $.get('https://markov-messages-rlpcgunfja.now.sh', { seed: text }, ({ message }) => {
+                        appendHistory(message, false);
+                    });
+                    $(this).val('');
+                }
+            });
+            $('#messagebox').focus();
+        </script>
+    </body>
+</html>

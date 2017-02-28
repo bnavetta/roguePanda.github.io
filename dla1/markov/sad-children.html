@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../lib/jquery-1.11.1.min.js"></script>
+        <script src="../lib/markov.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <style>
+            body {
+                margin: 50px 80px;
+                color: #1E1C1F;
+                background-color: #704756;
+
+                font-size: 18px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id="generate">Generate</button>
+
+        <p>Markov-generated text will go here</p>
+        <p>Markov-generated text will go here</p>
+        <p>Markov-generated text will go here</p>
+        <p>Markov-generated text will go here</p>
+
+        <script type="text/babel">
+            const markov = new MarkovGeneratorWord(2, 200);
+
+            for (let source of ['grimm.txt', 'tinderbox.txt', 'lovecraft.txt', 'kafka.txt', 'steam-engine.txt', 'beatrix-potter.txt']) {
+                $.get(source, text => markov.feed(text));
+            }
+
+            const generate = () => {
+                $("p").each(function () { $(this).text(markov.generate()) });
+                // $('#output').text(markov.generate());
+            }
+
+            $('#generate').click(generate);
+            // $(document).ready(generate);
+        </script>
+    </body>
+</html>
