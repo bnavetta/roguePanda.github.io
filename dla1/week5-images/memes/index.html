@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            html {
+                /* Why not? */
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
+            }
+
+            .meme-list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                width: 100%;
+
+                list-style-type: none;
+            }
+
+            .meme-list > li {
+                padding: 20px;
+            }
+
+            img {
+                max-width: 80%;
+            }
+        </style>
+    </head>
+    <body>
+        <marquee scrollamount="30">
+            <h1>MEMES</h1>
+        </marquee>
+
+        <ul class="meme-list">
+            <li>
+                <img src="insincere.png"/>
+            </li>
+            <li>
+                <img src="history-of-the-internet.png">
+            </li>
+            <li>
+                <img src="stallman.png" alt="It's GNU/Linux, dammit">
+            </li>
+        </ul>
+    </body>
+</html>
