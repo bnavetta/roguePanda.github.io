@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('space', function(){
+	if($('#audioTrack')[0].paused){
+		$('#audioTrack')[0].play()
+	} else {
+		$('#audioTrack')[0].pause()
+	}
+	//code to loop or pause a video 
+	// $('#audioTrack')[0].loop = true
+})
+
+Mousetrap.bind('v', function(){
+	//volume goes between 0 and 1.0
+	$('#audioTrack')[0].volume = 0.5
+})
+
+Mousetrap.bind('c', function(){
+	//currentTime gets or sets the playhead of the video between 0 and the total number of seconds (i.e. 135 for a 2:15 video)
+	$('#audioTrack')[0].currentTime = 23
+})
+
+Mousetrap.bind('r', function(){
+	//1 is normal playbackRate, 0.5 is half speed, 2 is double speed, you lose audio above 4x
+	$('#audioTrack')[0].playbackRate = 3
+})
+</script>
+<style>
+html { 
+
+  overflow: hidden;
+}
+#textHerePlz{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40vh;
+	width: 80%;
+	font-family: Century Gothic;
+	color: goldenrod;
+	font-size: 2em;
+}
+
+</style>
+</head>
+<body>
+<audio id="audioTrack" src="Judy.mp3" preload="auto"></audio>
+<div id="textHerePlz">
+<h1 id="introText">Press Space to Begin<br>Check JS file for options</h1>
+</div>;
+</body>
+</html>

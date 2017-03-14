@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stilton | Adventures in Cheesy Effects</title>
+        <script src="../lib/jquery-1.11.1.min.js"></script>
+        <style>
+            .effect {
+                font-family: 'Comic Sans', 'Comic Sans MS', cursive;
+                font-size: 1.3em;
+            }
+
+            .effect:hover {
+                color: red;
+                transition: color 0.5s;
+            }
+
+            .effect-ding {
+                color: green;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            section {
+                width: 40em;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Intentionally mash older text (Jules Verne) with modern / cheesy effects. -->
+        <section>
+            <p>"We shall miss our excellent friend," I remarked, with a deep sigh.</p>
+            <p><span class="effect effect-laugh">"Bah!"</span> said my uncle testily, "what matters it? That or another, it is all the same."</p>
+            <p>I thought the remark ungrateful, and felt almost inclined to say so; but I forbore.</p>
+            <p>
+                At this moment my attention was attracted by an unexpected spectacle. After we had gone about five hundred
+                yards, we suddenly turned a steep promontory, and found ourselves close to a lofty forest! It consisted of
+                straight trunks with tufted tops, in shape like parasols. The air seemed to have no effect upon these
+                trees — which in spite of a tolerable breeze remained as still and motionless as if they had been petrified.
+            </p>
+            <p>
+                I hastened forward. I could find no name for these singular formations. Did they not belong to the two
+                thousand and more known trees—or were we to make the discovery of a new growth? By no means. When we at last
+                reached the forest, and stood beneath the trees, my surprise gave way to admiration.
+            </p>
+            <p>
+                In truth, I was simply in the presence of a very ordinary product of the earth, of singular and gigantic
+                proportions. My uncle unhesitatingly called them by their real names.
+            </p>
+            <p>"It is only," he said, in his coolest manner, "a forest of mushrooms."</p>
+            <p>
+                On close examination I found that he was not mistaken. Judge of the development attained by this product of
+                damp hot soils. I had heard that the Lycoperdon giganteum reaches nine feet in circumference, but here were
+                white mushrooms, nearly forty feet high, and with tops of equal dimensions. They grew in countless
+                thousands—the light could not make its way through their massive substance, and beneath them reigned a
+                gloomy and mystic darkness.
+            </p>
+            <p>
+                Still I wished to go forward. The cold in the shades of this singular forest was intense. For nearly an hour
+                we wandered about in this visible darkness. At length I left the spot, and once more returned to the shores
+                of the lake, to light and comparative warmth.
+            </p>
+            <p>
+                But the amazing vegetation of subterraneous land was not confined to gigantic mushrooms. New wonders awaited
+                us at every step. We had not gone many hundred yards, when we came upon a mighty group of other trees with
+                discolored leaves—the common humble trees of Mother Earth, of an exorbitant and phenomenal size: lycopods a
+                hundred feet high; flowering ferns as tall as pines; gigantic grasses!
+            </p>
+            <p>
+                "Astonishing, magnificent, splendid!" cried my uncle; "here we have before us the whole flora of the second
+                period of the world, that of transition. Behold the humble plants of our gardens, which in the first ages of
+                the world were mighty trees. Look around you, my dear Harry. No botanist ever before gazed on such a sight!"
+            </p>
+            <p>My uncle's enthusiasm, always a little more than was required, was now excusable.</p>
+
+            This is some text. It has some <span class="effect effect-ding">sound effects</span>.
+        </section>
+
+        <script>
+            var effects = ['ding', 'laugh'];
+            effects.forEach(function (effect) {
+                var audioElem = document.createElement('audio');
+                audioElem.src = effect + '.mp3';
+                document.body.appendChild(audioElem);
+
+                $('.effect-' + effect).mouseenter(function () {
+                    audioElem.play();
+                    audioElem.currentTime = 0;
+                });
+                // $('.effect-' + effect).hover(function () {
+                //     audioElem.play();
+                // }, function() {
+                //     audioElem.currentTime = 0;
+                //     // audioElem.pause();
+                // });
+            });
+        </script>
+    </body>
+</html>
