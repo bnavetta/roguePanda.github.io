@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>What does the internet sound like?</title>
+        <script src="../lib/p5.min.js"></script>
+        <script src="../lib/p5.sound.js"></script>
+
+        <style>
+            .container {
+                display: flex;
+                width: 100%;
+                height: 100%;
+            }
+
+            .col {
+                flex: 1;
+            }
+
+            .row {
+                margin: 50px;
+            }
+
+            .control {
+                width: 300px;
+                height: 300px;
+                transition: width 0.5s, height 0.5s;
+                cursor: pointer;
+                border: 20px solid purple;
+            }
+
+            .control:hover {
+                width: 350px;
+                height: 350px;
+                transition: width 0.5s, height 0.5s;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col">
+                <div class="row">
+                    <img class="control" src="budget.png" id="budget">
+                </div>
+                <div class="row">
+                    <img class="control" src="wholesome.png" id="wholesome">
+                </div>
+                <div class="row"></div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <img src="jack.png" class="control" id="jack">
+                </div>
+                <div class="row"></div>
+                <div class="row"></div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <img src="xkcd-love.png" class="control" id="xkcd-love">
+                </div>
+                <div class="row"></div>
+                <div class="row"></div>
+            </div>
+        </div>
+
+        <script>
+            var imperial;
+            var wholesome;
+            var lookinForLove;
+            var joyDivision;
+
+            function setup() {
+                imperial = loadSound('imperial.mp3');
+                wholesome = loadSound('best-friend.mp3');
+                lookinForLove = loadSound('looking-for-love.mp3');
+                joyDivision = loadSound('love-will-tear-us-apart.mp3');
+            }
+
+            document.getElementById('budget').addEventListener('click', function () {
+                imperial.play();
+            });
+
+            document.getElementById('wholesome').addEventListener('click', function () {
+                wholesome.play();
+            });
+
+            document.getElementById('jack').addEventListener('click', function () {
+                lookinForLove.play();
+            });
+
+            document.getElementById('xkcd-love').addEventListener('click', function () {
+                joyDivision.play();
+            });
+        </script>
+    </body>
+</html>
