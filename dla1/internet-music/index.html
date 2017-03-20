@@ -25,7 +25,6 @@
                 height: 300px;
                 transition: width 0.5s, height 0.5s;
                 cursor: pointer;
-                border: 20px solid purple;
             }
 
             .control:hover {
@@ -33,31 +32,44 @@
                 height: 350px;
                 transition: width 0.5s, height 0.5s;
             }
+
+            .purple {
+                border: 20px solid purple;
+            }
+
+            .orange {
+                border: 20px solid orange;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="col">
                 <div class="row">
-                    <img class="control" src="budget.png" id="budget">
+                    <img class="control purple" src="budget.png" id="budget">
                 </div>
                 <div class="row">
-                    <img class="control" src="wholesome.png" id="wholesome">
+                    <img class="control orange" src="wholesome.png" id="wholesome">
+                </div>
+                <div class="row">
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <img src="jack.png" class="control orange" id="jack">
+                </div>
+                <div class="row">
+                    <img src="reddit.png" class="control purple" id="reddit">
                 </div>
                 <div class="row"></div>
             </div>
             <div class="col">
                 <div class="row">
-                    <img src="jack.png" class="control" id="jack">
+                    <img src="xkcd-love.png" class="control purple" id="xkcd-love">
                 </div>
-                <div class="row"></div>
-                <div class="row"></div>
-            </div>
-            <div class="col">
                 <div class="row">
-                    <img src="xkcd-love.png" class="control" id="xkcd-love">
+                    <img src="ucbmfet.jpg" id="ucbmfet" class="control orange">
                 </div>
-                <div class="row"></div>
                 <div class="row"></div>
             </div>
         </div>
@@ -67,12 +79,16 @@
             var wholesome;
             var lookinForLove;
             var joyDivision;
+            var bowie;
+            var eightMilesHigh;
 
             function setup() {
                 imperial = loadSound('imperial.mp3');
                 wholesome = loadSound('best-friend.mp3');
                 lookinForLove = loadSound('looking-for-love.mp3');
                 joyDivision = loadSound('love-will-tear-us-apart.mp3');
+                bowie = loadSound('lets-dance.mp3');
+                eightMilesHigh = loadSound('eight-miles-high.mp3');
             }
 
             document.getElementById('budget').addEventListener('click', function () {
@@ -89,6 +105,14 @@
 
             document.getElementById('xkcd-love').addEventListener('click', function () {
                 joyDivision.play();
+            });
+
+            document.getElementById('reddit').addEventListener('click', function () {
+                bowie.play();
+            });
+
+            document.getElementById('ucbmfet').addEventListener('click', function () {
+                eightMilesHigh.play();
             });
         </script>
     </body>
